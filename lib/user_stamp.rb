@@ -35,7 +35,7 @@ class UserStampSweeper < ActionController::Caching::Sweeper
     end
     
     if record.respond_to?(UserStamp.updater_assignment_method)
-      record.send(UserStamp.updater_assignment_method, current_user.id)
+      record.send(UserStamp.updater_assignment_method, current_user.id) if record.changed?
     end
   end
   
